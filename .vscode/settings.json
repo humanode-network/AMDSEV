@@ -1,0 +1,11 @@
+{
+  // Disable formatter to avoid giant diffs.
+  // AMD guys should really use some, but until they adopt it we better
+  // disable ours.
+  "editor.defaultFormatter": null,
+  "editor.formatOnSave": false,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": false,
+    "source.organizeImports": false
+  }
+}
