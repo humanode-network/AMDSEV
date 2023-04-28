@@ -16,8 +16,8 @@ Newer SNP host/kernel support now relies on new kernel infrastructure for managi
 The following command builds the host and guest Linux kernel, qemu and ovmf bios used for launching SEV-SNP guest.
 
 ````
-# git clone https://github.com/AMDESE/AMDSEV.git
-# git checkout snp-latest
+# git clone https://github.com/humanode-network/AMDSEV.git
+# git checkout snp-latest-humanode
 # ./build.sh --package
 # sudo cp kvm.conf /etc/modprobe.d/
 ````
