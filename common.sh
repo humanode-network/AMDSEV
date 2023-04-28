@@ -62,7 +62,12 @@ build_kernel()
 			run_cmd git checkout current/${BRANCH}
 			COMMIT=$(git log --format="%h" -1 HEAD)
 
-			run_cmd "cp /boot/config-$(uname -r) .config"
+			PREEXTRACTED_CONFIG="../../${V}-config"
+			if [[ -f "${PREEXTRACTED_CONFIG}" ]]; then
+				run_cmd "cp ${PREEXTRACTED_CONFIG} .config"
+			else
+				run_cmd "cp /boot/config-$(uname -r) .config"
+			fi
 			run_cmd ./scripts/config --set-str LOCALVERSION "$VER-$COMMIT"
 			run_cmd ./scripts/config --disable LOCALVERSION_AUTO
 			run_cmd ./scripts/config --enable  DEBUG_INFO
@@ -83,7 +88,7 @@ build_kernel()
 
 		yes "" | $MAKE olddefconfig
 
-		# Build 
+		# Build
 		run_cmd $MAKE >/dev/null
 
 		if [ "$ID" = "debian" ] || [ "$ID_LIKE" = "debian" ]; then
