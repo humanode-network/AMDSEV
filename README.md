@@ -11,6 +11,16 @@ Newer SNP host/kernel support now relies on new kernel infrastructure for managi
 * Guest private memory is now accounted as shared memory rather than used memory, so please take this into account when monitoring memory usage.
 * The QEMU command-line options to launch an SEV-SNP guest have changed. Setting these options will be handled automatically when using the launch-qemu.sh script mentioned in the instructions below. If launching QEMU directly, please still reference the script to determine the correct QEMU options to use.
 
+## Prepare the build environment
+
+The latest EDK2 tree requires `nasm` 2.15+ to build, but the lastest version availabe in Ubuntu 20.04 officail repos is 2.14.
+
+Enable the [nasm-backports PPA](https://launchpad.net/~mozgiii/+archive/ubuntu/nasm-backports) and install `nasm` from there:
+
+```shell
+sudo add-apt-repository ppa:mozgiii/nasm-backports
+```
+
 ## Build
 
 The following command builds the host and guest Linux kernel, qemu and ovmf bios used for launching SEV-SNP guest.
