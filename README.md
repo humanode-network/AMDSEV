@@ -13,12 +13,22 @@ Newer SNP host/kernel support now relies on new kernel infrastructure for managi
 
 ## Prepare the build environment
 
+### `nasm`
+
 The latest EDK2 tree requires `nasm` 2.15+ to build, but the lastest version availabe in Ubuntu 20.04 officail repos is 2.14.
 
 Enable the [nasm-backports PPA](https://launchpad.net/~mozgiii/+archive/ubuntu/nasm-backports) and install `nasm` from there:
 
 ```shell
 sudo add-apt-repository ppa:mozgiii/nasm-backports
+```
+
+### Build Dependencies
+
+Then install the rest of the build dependencies. The easiest way to do this is to request `apt` to install build dependencies for the official Ubuntu packages with the same software that is build here.
+
+```
+sudo apt-get build-dep linux qemu ovmf
 ```
 
 ## Build
