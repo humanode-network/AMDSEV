@@ -78,7 +78,11 @@ build_kernel()
 			run_cmd ./scripts/config --module  CRYPTO_DEV_CCP_DD
 			run_cmd ./scripts/config --disable SYSTEM_TRUSTED_KEYS
 			run_cmd ./scripts/config --disable SYSTEM_REVOCATION_KEYS
-			run_cmd ./scripts/config --module  SEV_GUEST
+			if [ "${V}" = "guest" ]; then
+				run_cmd ./scripts/config --enable SEV_GUEST
+			else
+				run_cmd ./scripts/config --module SEV_GUEST
+			fi
 			run_cmd ./scripts/config --disable IOMMU_DEFAULT_PASSTHROUGH
 			run_cmd ./scripts/config --disable PREEMPT_COUNT
 			run_cmd ./scripts/config --disable PREEMPTION
